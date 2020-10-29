@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Route, Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import NoteListNav from '../NoteListNav/NoteListNav';
@@ -12,7 +12,7 @@ import AddFolder from '../AddFolder/AddFolder';
 import AddNote from '../AddNote/AddNote';
 import ErrorBoundary from '../ErrorBoundary';
 
-class App extends Component {
+export default class App extends React.Component {
     state = {
         notes: [],
         folders: [],
@@ -121,4 +121,4 @@ class App extends Component {
     }
 }
 
-export default App;
+

@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import ApiContext from "../ApiContext";
 import config from '../config';
 import ValidateError from '../ValidateError';
 import PropTypes from 'prop-types';
 import '../AddFolder/AddFolder.css';
 
-export default class AddFolder extends Component {
-  static contextType = ApiContext;
+export default class AddFolder extends React.Component {
+  
 
   constructor(props){
     super(props);
@@ -18,7 +18,9 @@ export default class AddFolder extends Component {
     }
   }
 
-  updateFolderName(foldername){
+  static contextType = ApiContext;
+
+  updateFolderName = foldername => {
     this.setState({
       folderName:{
         value: foldername, 
@@ -27,8 +29,8 @@ export default class AddFolder extends Component {
     })
   }
 
-  handleSubmitFolder = (event) =>{
-    event.preventDefault();
+  handleSubmitFolder = e => {
+    e.preventDefault();
     let nameError=this.validateName();
     const foldername=this.state.folderName.value;
     if(nameError){
@@ -49,19 +51,19 @@ export default class AddFolder extends Component {
     })
     .then(res=>res.json())
     .then(data=>{
-      console.log(data)
+      
       this.context.addFolder(data)
       this.props.history.push('/')
     })
-    .catch(error=>console.log(error))
+    .catch(err=>console.log(err))
   }
 
   
-  //validate folder name
+  
   validateName(){
     const folderName = this.state.folderName.value.trim()
     if(folderName.length === 0){
-      return 'Name is required'
+      return 'Name is required';
     } else if(folderName.length < 3){
       return 'Name must be at least 3 characters long';
     }

@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import ApiContext from "../ApiContext";
 import config from "../config";
 import ValidateError from "../ValidateError";
 import "../AddNote/AddNote.css";
 import PropTypes from "prop-types";
 
-export default class AddNote extends Component {
-  static contextType = ApiContext;
+export default class AddNote extends React.Component {
+  
 
   constructor(props) {
     super(props);
@@ -22,6 +22,8 @@ export default class AddNote extends Component {
       folderId: " ",
     };
   }
+
+  static contextType = ApiContext;
 
   updateNoteName(noteName) {
     this.setState({
@@ -41,14 +43,14 @@ export default class AddNote extends Component {
     });
   }
 
-  handleSumiteNote = (event) => {
-    event.preventDefault();
+  handleSubmitNote = e => {
+    e.preventDefault();
     let nameError = this.validateName();
     let contentError = this.validateContent();
     const noteName = this.state.noteName.value;
     const content = this.state.content.value;
     const modified = new Date();
-    const folderID = event.currentTarget.querySelector("select").value;
+    const folderID = e.currentTarget.querySelector("select").value;
     if (nameError) {
       this.setState({
         noteName: {
@@ -118,7 +120,7 @@ export default class AddNote extends Component {
       <div className="add-note">
         <h2>Add A New Note</h2>
 
-        <form className="add-note" onSubmit={(e) => this.handleSumiteNote(e)}>
+        <form className="add-note" onSubmit={e => this.handleSubmitNote(e)}>
           <div className="add-note-name">
             <p>Add Name Here</p>
             <label htmlFor="note-name" className="note-name">

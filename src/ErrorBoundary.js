@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types'
 
-export default class NotefulErrors extends Component {
+export default class ErrorHandling extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,17 +14,21 @@ export default class NotefulErrors extends Component {
 
   }
   render() {
-    if (this.state.hasError){
-      return(
+    return (
+      (this.state.hasError)
+      ?
+      (
         <div>
-          <h2>Could not display the correct content</h2>
+          <h2>Something wrong with the code. The correct content could not be rendered to the UI</h2>
         </div>
       )
-    }
-    return this.props.children;
+    
+      : this.props.children
+    )
+     
   }
 }
 
-NotefulErrors.propTypes = {
+ErrorHandling.propTypes = {
   children: PropTypes.array
 }
