@@ -68,7 +68,7 @@ export default class AddNote extends Component {
       return;
     }
 
-    fetch(`${config.API_ENDPOINT}/notes/`, {
+    fetch(`${config.Local_Server_Endpoint}/notes/`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

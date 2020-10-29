@@ -20,8 +20,8 @@ class App extends Component {
 
     componentDidMount() {
         Promise.all([
-            fetch(`${config.API_ENDPOINT}/notes`),
-            fetch(`${config.API_ENDPOINT}/folders`)
+            fetch(`${config.Local_Server_Endpoint}/notes`),
+            fetch(`${config.Local_Server_Endpoint}/folders`)
         ])
             .then(([notesRes, foldersRes]) => {
                 if (!notesRes.ok)
