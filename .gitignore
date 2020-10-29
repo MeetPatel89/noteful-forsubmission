@@ -1,0 +1,4 @@
+// to not add to git repository
+
+node_modules/
+noteful-json-server/
