@@ -4,6 +4,8 @@ import config from '../config';
 import ValidateError from '../ValidateError';
 import PropTypes from 'prop-types';
 import '../AddFolder/AddFolder.css';
+import ErrorBoundary from '../ErrorBoundary';
+
 
 export default class AddFolder extends React.Component {
   
@@ -71,9 +73,14 @@ export default class AddFolder extends React.Component {
 
 
   render() {
+    
+
+    
     const nameError = this.validateName();
     return (
-      <div>
+
+     
+          <div>
         <h2>Add A New Folder</h2>
 
         <form className="add-folder" onSubmit={e=>this.handleSubmitFolder(e)}> 
@@ -98,6 +105,8 @@ export default class AddFolder extends React.Component {
           
         </form>
       </div>
+      
+      
     );
   }
 }

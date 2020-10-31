@@ -6,6 +6,8 @@ import ApiContext from "../ApiContext";
 import config from "../config";
 import "./Note.css";
 import PropTypes from "prop-types";
+
+
 export default class Note extends React.Component {
   static defaultProps = {
     onDeleteNote: () => {},
@@ -34,11 +36,14 @@ export default class Note extends React.Component {
       });
   };
   render() {
+    
     const { name, id, modified } = this.props;
     // console.log(this.props, "props");
     // console.log(modified, "modified");
     return (
+      
       <div className="Note">
+        
         <h2 className="Note__title">
           <Link to={`/note/${id}`}>{name}</Link>
         </h2>
@@ -55,12 +60,16 @@ export default class Note extends React.Component {
             <span className="Date">{format(modified, "ddd, MMM Do YYYY")}</span>
           </div>
         </div>
+        
+        
       </div>
+      
     );
   }
 }
 Note.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  onDeleteNote: PropTypes.func.isRequired,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  onDeleteNote: PropTypes.func,
+  modified: PropTypes.string
 };

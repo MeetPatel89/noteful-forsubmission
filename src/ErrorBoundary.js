@@ -14,6 +14,7 @@ export default class ErrorHandling extends React.Component {
 
   }
   render() {
+    
     return (
       (this.state.hasError)
       ?
@@ -30,5 +31,5 @@ export default class ErrorHandling extends React.Component {
 }
 
 ErrorHandling.propTypes = {
-  children: PropTypes.array
+  children: PropTypes.object
 }

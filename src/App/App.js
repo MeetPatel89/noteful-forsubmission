@@ -61,6 +61,8 @@ export default class App extends React.Component {
     renderNavRoutes() {
         return (
             <>
+               
+                
                 {['/', '/folder/:folderId'].map(path => (
                     <Route
                         exact
@@ -69,9 +71,20 @@ export default class App extends React.Component {
                         component={NoteListNav}
                     />
                 ))}
+                
+                
                 <Route path="/note/:noteId" component={NotePageNav} />
+                
+                
                 <Route path="/add-folder" component={NotePageNav} />
+                
+                
                 <Route path="/add-note" component={NotePageNav} />
+                
+                
+               
+               
+                
             </>
         );
     }
@@ -79,22 +92,34 @@ export default class App extends React.Component {
     renderMainRoutes() {
         return (
             <>
-                {['/', '/folder/:folderId'].map(path => (
+            
+                    {['/', '/folder/:folderId'].map(path => (
                     <Route
                         exact
                         key={path}
                         path={path}
                         component={NoteListMain}
                     />
-                ))}
-                <Route path="/note/:noteId" component={NotePageMain} />
-                <Route path="/add-folder" component={AddFolder} />
-                <Route path="/add-note" component={AddNote} />
+                     ))}
+            
+                
+                    <Route path="/note/:noteId" component={NotePageMain} />
+                
+                
+                    <Route path="/add-folder" component={AddFolder} />
+                
+                
+                    <Route path="/add-note" component={AddNote} />
+                
+                
+                
+                
             </>
         );
     }
 
     render() {
+        
         const value = {
             notes: this.state.notes,
             folders: this.state.folders,
@@ -105,16 +130,26 @@ export default class App extends React.Component {
         return (
             <ApiContext.Provider value={value}>
                 <div className="App">
+                   <ErrorBoundary>
+                   <nav className="App__nav">{this.renderNavRoutes()}</nav>
+                   </ErrorBoundary>
+                    
                     <ErrorBoundary>
-                    <nav className="App__nav">{this.renderNavRoutes()}</nav>
                     <header className="App__header">
                         <h1>
                             <Link to="/">Noteful</Link>{' '}
                             <FontAwesomeIcon icon="check-double" />
                         </h1>
                     </header>
+                    </ErrorBoundary>
+                    
+                    <ErrorBoundary>
                     <main className="App__main">{this.renderMainRoutes()}</main>
                     </ErrorBoundary>
+                    
+                    
+                    
+                    
                 </div>
             </ApiContext.Provider>
         );

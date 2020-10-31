@@ -4,6 +4,8 @@ import config from "../config";
 import ValidateError from "../ValidateError";
 import "../AddNote/AddNote.css";
 import PropTypes from "prop-types";
+import ErrorBoundary from '../ErrorBoundary';
+
 
 export default class AddNote extends React.Component {
   
@@ -114,10 +116,12 @@ export default class AddNote extends React.Component {
   };
 
   render() {
+    
     const nameError = this.validateName();
     const contentError = this.validateContent();
     return (
-      <div className="add-note">
+      
+          <div className="add-note">
         <h2>Add A New Note</h2>
 
         <form className="add-note" onSubmit={e => this.handleSubmitNote(e)}>
@@ -156,10 +160,12 @@ export default class AddNote extends React.Component {
           <button type="submit">Submit</button>
         </form>
       </div>
+      
+      
     );
   }
 }
 
 AddNote.propTypes = {
-  history: PropTypes.object,
+  history: PropTypes.object
 };
